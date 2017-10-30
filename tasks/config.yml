@@ -8,14 +8,12 @@
     group: root
   with_items:
     - "{{ supervisor_config_path }}"
-
 - name: Ensure Supervisor configuration is present.
   template:
     src: supervisord.conf.j2
     dest: "{{ supervisor_config_path }}/supervisord.conf"
     mode: 0644
   notify: restart supervisor
-
 - name: Ensure Supervisor program configs are present.
   template:
     src: program.conf.j2
